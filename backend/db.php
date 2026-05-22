@@ -5,17 +5,22 @@ $dbname = $_ENV['DB_NAME'];
 $username = $_ENV['DB_USER'];
 $password = $_ENV['DB_PASS'];
 
-try {
+echo $host;
+echo $dbname;
+echo $username;
+echo $password;
 
-    $db = new PDO(
-        "mysql:host=$host;dbname=$dbname",
-        $username,
-        $password
-    );
+// try {
 
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//     $db = new PDO(
+//         "mysql:host=$host;dbname=$dbname",
+//         $username,
+//         $password
+//     );
 
-} catch (PDOException $e) {
+//     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    die($e->getMessage());
-}
+// } catch (PDOException $e) {
+
+//     die($e->getMessage());
+// }
