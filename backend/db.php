@@ -1,26 +1,23 @@
 <?php
 
+require_once __DIR__ . '/config/env.php';
+
 $host = $_ENV['DB_HOST'];
 $dbname = $_ENV['DB_NAME'];
 $username = $_ENV['DB_USER'];
 $password = $_ENV['DB_PASS'];
 
-echo $host;
-echo $dbname;
-echo $username;
-echo $password;
+try {
 
-// try {
+    $db = new PDO(
+        "mysql:host=$host;dbname=$dbname",
+        $username,
+        $password
+    );
 
-//     $db = new PDO(
-//         "mysql:host=$host;dbname=$dbname",
-//         $username,
-//         $password
-//     );
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-//     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
 
-// } catch (PDOException $e) {
-
-//     die($e->getMessage());
-// }
+    die($e->getMessage());
+}
